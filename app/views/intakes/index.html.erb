@@ -5,7 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Count</th>
+      <th>User</th>
+      <th>Ingredient</th>
+      <th>Amount</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +15,9 @@
   <tbody>
     <% @intakes.each do |intake| %>
       <tr>
-        <td><%= intake.count %></td>
+        <td><%= intake.user %></td>
+        <td><%= intake.ingredient %></td>
+        <td><%= intake.amount %></td>
         <td><%= link_to 'Show', intake %></td>
         <td><%= link_to 'Edit', edit_intake_path(intake) %></td>
         <td><%= link_to 'Destroy', intake, method: :delete, data: { confirm: 'Are you sure?' } %></td>

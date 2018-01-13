@@ -1,4 +1,14 @@
 <h1>Main page</h1>
-<p>
-    Lorem ipsum sit amet
-</p>
+<%if logged_in? %>
+    <h2>My intakes</h2>
+    <% current_user.intakes.each do |intake| %>
+        <h3>
+            <td><%= intake.ingredient %></td>
+            <td><%= intake.amount %></td>
+            <td><%= intake.timestamp %></td>
+        </h3>
+    <% end %>
+    <%= link_to 'New Intake', new_intake_path %>
+<% else %>
+    You are not logged in
+<% end %>

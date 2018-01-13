@@ -69,6 +69,6 @@ class IntakesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def intake_params
-      params.require(:intake).permit(:count)
+      params.require(:intake).permit(:user_id, :ingredient_id, :amount)
     end
 end

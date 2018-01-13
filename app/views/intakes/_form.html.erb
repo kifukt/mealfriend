@@ -12,8 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :count %>
-    <%= form.text_field :count, id: :intake_count %>
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :intake_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ingredient_id %>
+    <%= form.text_field :ingredient_id, id: :intake_ingredient_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount, id: :intake_amount %>
   </div>
 
   <div class="actions">

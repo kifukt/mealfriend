@@ -1,8 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Count:</strong>
-  <%= @intake.count %>
+  <strong>User:</strong>
+  <%= @intake.user %>
+</p>
+
+<p>
+  <strong>Ingredient:</strong>
+  <%= @intake.ingredient %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @intake.amount %>
 </p>
 
 <%= link_to 'Edit', edit_intake_path(@intake) %> |

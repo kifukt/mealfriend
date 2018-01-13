@@ -17,7 +17,7 @@ class IntakesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create intake" do
     assert_difference('Intake.count') do
-      post intakes_url, params: { intake: { count: @intake.count } }
+      post intakes_url, params: { intake: { amount: @intake.amount, ingredient_id: @intake.ingredient_id, user_id: @intake.user_id } }
     end
 
     assert_redirected_to intake_url(Intake.last)
@@ -34,7 +34,7 @@ class IntakesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update intake" do
-    patch intake_url(@intake), params: { intake: { count: @intake.count } }
+    patch intake_url(@intake), params: { intake: { amount: @intake.amount, ingredient_id: @intake.ingredient_id, user_id: @intake.user_id } }
     assert_redirected_to intake_url(@intake)
   end
 
