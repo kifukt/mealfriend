@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113120154) do
+ActiveRecord::Schema.define(version: 20180113144746) do
 
   create_table "diaries", force: :cascade do |t|
     t.float "weight"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20180113120154) do
     t.boolean "sex"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end
