@@ -1,0 +1,42 @@
+<%= form_with(model: ingredient, local: true) do |form| %>
+  <% if ingredient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+
+      <ul>
+      <% ingredient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :calories %>
+    <%= form.text_field :calories, id: :ingredient_calories %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carbohydrates %>
+    <%= form.text_field :carbohydrates, id: :ingredient_carbohydrates %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fats %>
+    <%= form.text_field :fats, id: :ingredient_fats %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :ingredient_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :proteins %>
+    <%= form.text_field :proteins, id: :ingredient_proteins %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

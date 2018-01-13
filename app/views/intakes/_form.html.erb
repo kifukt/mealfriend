@@ -1,0 +1,22 @@
+<%= form_with(model: intake, local: true) do |form| %>
+  <% if intake.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intake.errors.count, "error") %> prohibited this intake from being saved:</h2>
+
+      <ul>
+      <% intake.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :count %>
+    <%= form.text_field :count, id: :intake_count %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

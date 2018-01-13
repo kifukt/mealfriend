@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Intakes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @intakes.each do |intake| %>
+      <tr>
+        <td><%= intake.count %></td>
+        <td><%= link_to 'Show', intake %></td>
+        <td><%= link_to 'Edit', edit_intake_path(intake) %></td>
+        <td><%= link_to 'Destroy', intake, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Intake', new_intake_path %>
