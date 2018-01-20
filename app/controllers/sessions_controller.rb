@@ -25,4 +25,19 @@ class SessionsController < ApplicationController
       end
     end
   end
+  def destroy
+    respond_to do | format |
+        format.html do
+          log_out
+          redirect_to root_url
+        end
+        format.json do
+          require_token
+          if current_user
+            current_user.invalidate_token
+            head :ok
+          end
+        end
+      end
+  end
 end

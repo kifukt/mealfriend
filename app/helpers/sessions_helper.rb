@@ -20,7 +20,7 @@ module SessionsHelper
     end
 
     def require_token
-        respont_to do |format|
+        respond_to do |format|
             format.json {
                 authenticate_token || render_unauthorised("Access denied")
             }
@@ -30,12 +30,12 @@ module SessionsHelper
 
     def authenticate_token
         authenticate_with_http_token do |token, options|
-            @current_user ||= user.find_by(token: token)
+            @current_user ||= User.find_by(token: token)
         end
     end
 
-    def render_unauthorised
+    def render_unauthorised(message)
         errors = { errors: [ { detail: message } ] }
-        render json: errors, status: unauthorised
+        render json: errors, status: :unauthorised
     end
 end
