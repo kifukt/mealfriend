@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180120140510) do
+ActiveRecord::Schema.define(version: 20180120141124) do
 
   create_table "diaries", force: :cascade do |t|
     t.integer "user_id"
@@ -48,7 +48,9 @@ ActiveRecord::Schema.define(version: 20180120140510) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "token"
     t.index ["login"], name: "index_users_on_login", unique: true
+    t.index ["token"], name: "index_users_on_token"
   end
 
 end

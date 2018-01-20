@@ -5,7 +5,7 @@
         <h3>
             <td><%= intake.ingredient %></td>
             <td><%= intake.amount %></td>
-            <td><%= intake.timestamp %></td>
+            <td><%= intake.created_at.to_s(:db) %></td>
         </h3>
     <% end %>
     <%= link_to 'New Intake', new_intake_path %>

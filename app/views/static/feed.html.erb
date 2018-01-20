@@ -1,0 +1,14 @@
+<ul>
+    Weight
+    <% current_user.diaries.each do | diary | %>
+        <li><%= diary.created_at.to_s(:db) %></li>
+        <li><%= diary.weight %></li>
+    <% end %>
+    Intakes
+    <% current_user.intakes.each do | intake | %>
+        <li><%= intake.ingredient.name %></li>
+        <li><%= intake.amount %></li>
+        <li><%= intake.created_at.to_s(:db) %></li>
+    <% end %>
+
+</ul>
