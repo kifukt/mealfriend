@@ -44,30 +44,30 @@ ingredients = Ingredient.create(
     ]
 )
 
-# intakes = Intake.create(
-#     [
-#         {
-#             login: 'jankowalski',
-#             name: 'rice',
-#             amount: 150
-#         },
-#         {
-#             login: 'jankowalski',
-#             name: 'egg',
-#             amount: 100
-#         }
-#     ]
-# )
+intakes = Intake.create(
+    [
+        {
+            user: users.first,
+            ingredient: ingredients.first,
+            amount: 150
+        },
+        {
+            user: users.last,
+            ingredient: ingredients.last,
+            amount: 250
+        }
+    ]
+)
 
-# diaries = Diary.create(
-#     [
-#         {
-#             login: 'joannakowalska',
-#             weight: 55
-#         },
-#         {
-#             login: 'jankowalski',
-#             weight: 81
-#         }
-#     ]
-# )
+diaries = Diary.create(
+    [
+        {
+            user: users.last,
+            weight: 55
+        },
+        {
+            user: users.first,
+            weight: 81
+        }
+    ]
+)

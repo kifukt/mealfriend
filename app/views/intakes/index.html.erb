@@ -15,8 +15,8 @@
   <tbody>
     <% @intakes.each do |intake| %>
       <tr>
-        <td><%= intake.user %></td>
-        <td><%= intake.ingredient %></td>
+        <td><%= intake.user.login %></td>
+        <td><%= intake.ingredient.name %></td>
         <td><%= intake.amount %></td>
         <td><%= link_to 'Show', intake %></td>
         <td><%= link_to 'Edit', edit_intake_path(intake) %></td>

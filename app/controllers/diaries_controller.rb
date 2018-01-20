@@ -69,6 +69,6 @@ class DiariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def diary_params
-      params.require(:diary).permit(:weight)
+      params.require(:diary).permit(:user_id, :weight)
     end
 end

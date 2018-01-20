@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :diary_user_id %>
+  </div>
+
+  <div class="field">
     <%= form.label :weight %>
     <%= form.text_field :weight, id: :diary_weight %>
   </div>

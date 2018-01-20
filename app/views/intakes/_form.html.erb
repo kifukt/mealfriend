@@ -11,14 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :intake_user_id %>
+    <%= form.collection_select(:user_id, User.all, :id, :login) %>
   </div>
+  
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :ingredient_id %>
-    <%= form.text_field :ingredient_id, id: :intake_ingredient_id %>
+    <%= form.collection_select(:ingredient_id, Ingredient.all, :id, :name) %>
   </div>
 
   <div class="field">
