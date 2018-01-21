@@ -31,6 +31,11 @@ class SessionsController < ApplicationController
       end
     end
   end
+
+  swagger_api :destroy do
+    summary "Invalidate a token"
+    param :header, "Authorization", :string, :required, "Authentication token"
+  end
   def destroy
     respond_to do | format |
         format.html do

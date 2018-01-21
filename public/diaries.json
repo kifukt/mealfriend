@@ -30,6 +30,13 @@
             },
             {
               "paramType": "form",
+              "name": "user_id",
+              "type": "integer",
+              "description": "User id",
+              "required": true
+            },
+            {
+              "paramType": "form",
               "name": "diary[weight]",
               "type": "float",
               "description": "Weight of a diary",
@@ -38,6 +45,72 @@
           ],
           "nickname": "Diaries#create",
           "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/diaries/{id}",
+      "operations": [
+        {
+          "summary": "Returns one diary for authenticatted user",
+          "notes": "Notes...",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Diary id",
+              "required": true
+            }
+          ],
+          "nickname": "Diaries#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/diaries/{id}",
+      "operations": [
+        {
+          "summary": "Update a diary",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Diary id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "diary[weight]",
+              "type": "float",
+              "description": "Weight of a diary",
+              "required": true
+            }
+          ],
+          "nickname": "Diaries#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/diaries/{id}",
+      "operations": [
+        {
+          "summary": "Destroys a diary",
+          "notes": "Notes...",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Post id",
+              "required": true
+            }
+          ],
+          "nickname": "Diaries#destroy",
+          "method": "delete"
         }
       ]
     }

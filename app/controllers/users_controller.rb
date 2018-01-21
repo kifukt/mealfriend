@@ -24,11 +24,6 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  swagger_api :create do
-    summary "Create a user"
-    param :form, "user[login]", :string, :required, "Users login"
-    param :form, "user[password]", :string, :required, "Users password"
-  end
   def new
     @user = User.new
   end
@@ -39,6 +34,14 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
+  swagger_api :create do
+    summary "Create a user"
+    param :form, "user[login]", :string, :required, "Users login"
+    param :form, "user[password]", :string, :required, "Users password"
+    param :form, "user[birthdate]", :date, :optional, "Users birthdate"
+    param :form, "user[height]", :integer, :optional,"Users height"
+    param :form, "user[sex]", :boolean, :required, "Users sex"
+  end
   def create
     @user = User.new(user_params)
 
@@ -55,6 +58,15 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
+  swagger_api :update do
+    summary "Update a user"
+    param :path, :id, :integer, :required, "users id"
+    param :form, "user[login]", :string, :required, "users login"
+    param :form, "user[password]", :string, :required, "users password"
+    param :form, "user[birthdate]", :date, :optional, "Users birthdate"
+    param :form, "user[height]", :integer, :optional,"Users height"
+    param :form, "user[sex]", :boolean, :required, "Users sex"
+  end
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -69,6 +81,11 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.json
+  swagger_api :destroy do
+    summary 'Destroys the user'
+    param :path, :id, :integer, :required, "User id"
+    notes 'Notes...'
+  end
   def destroy
     @user.destroy
     respond_to do |format|

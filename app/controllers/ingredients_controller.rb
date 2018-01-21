@@ -16,6 +16,11 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients/1
   # GET /ingredients/1.json
+  swagger_api :show do
+    summary 'Returns one ingredient'
+    param :path, :id, :integer, :required, "Ingredient id"
+    notes 'Notes...'
+  end
   def show
   end
 
@@ -55,6 +60,15 @@ class IngredientsController < ApplicationController
 
   # PATCH/PUT /ingredients/1
   # PATCH/PUT /ingredients/1.json
+  swagger_api :update do
+    summary "Upgrade an ingredient"
+    param :path, :id, :integer, :required, "Ingredients id"
+    param :form, "ingredient[name]", :string, :required, "Title of an ingredient"
+    param :form, "ingredient[calories]", :float, :optional, "Calories amount"
+    param :form, "ingredient[proteins]", :float, :optional, "Proteins amount"
+    param :form, "ingredient[carbohydrates]", :float, :optional, "Carbohydrates amount"
+    param :form, "ingredient[fats]", :float, :optional, "Fats amount"
+  end
   def update
     respond_to do |format|
       if @ingredient.update(ingredient_params)

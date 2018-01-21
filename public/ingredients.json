@@ -61,6 +61,80 @@
           "method": "post"
         }
       ]
+    },
+    {
+      "path": "/ingredients/{id}",
+      "operations": [
+        {
+          "summary": "Returns one ingredient",
+          "notes": "Notes...",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Ingredient id",
+              "required": true
+            }
+          ],
+          "nickname": "Ingredients#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/ingredients/{id}",
+      "operations": [
+        {
+          "summary": "Upgrade an ingredient",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Ingredients id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "ingredient[name]",
+              "type": "string",
+              "description": "Title of an ingredient",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "ingredient[calories]",
+              "type": "float",
+              "description": "Calories amount",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "ingredient[proteins]",
+              "type": "float",
+              "description": "Proteins amount",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "ingredient[carbohydrates]",
+              "type": "float",
+              "description": "Carbohydrates amount",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "ingredient[fats]",
+              "type": "float",
+              "description": "Fats amount",
+              "required": false
+            }
+          ],
+          "nickname": "Ingredients#update",
+          "method": "patch"
+        }
+      ]
     }
   ],
   "authorizations": null

@@ -17,6 +17,11 @@ class IntakesController < ApplicationController
 
   # GET /intakes/1
   # GET /intakes/1.json
+  swagger_api :show do
+    summary 'Returns one intake'
+    param :path, :id, :integer, :required, "Intake id"
+    notes 'Notes...'
+  end
   def show
   end
 
@@ -34,9 +39,10 @@ class IntakesController < ApplicationController
   swagger_api :create do
     summary "Create new intake"
     param :header, "Authorization", :string, :required, "Authentication token"
-    param :form, "ingredient_id", :integer, :required, "ingredient id"
+    param :path, :ingredient_id, :integer, :required, "Ingredient id"
+    
     param :form, "intake[amount]", :float, :required, "Amount of an intake"
-   end
+  end
   def create
     @ingredient = Ingredient.find(params[:ingredient_id])
     @intake = @ingredient.intake.new(intake_params)
@@ -55,6 +61,11 @@ class IntakesController < ApplicationController
 
   # PATCH/PUT /intakes/1
   # PATCH/PUT /intakes/1.json
+  swagger_api :update do
+    summary "Update an intake"
+    param :form, "ingredient_id", :integer, :required, "ingredient id"
+    param :form, "intake[amount]", :float, :optional, "Amount of an intake"
+  end
   def update
     respond_to do |format|
       if @intake.update(intake_params)
@@ -69,6 +80,11 @@ class IntakesController < ApplicationController
 
   # DELETE /intakes/1
   # DELETE /intakes/1.json
+  swagger_api :destroy do
+    summary 'Destroys an intake'
+    param :path, :id, :integer, :required, "Intake id"
+    notes 'Notes...'
+  end
   def destroy
     @intake.destroy
     respond_to do |format|

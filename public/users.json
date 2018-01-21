@@ -34,6 +34,27 @@
               "type": "string",
               "description": "Users password",
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user[birthdate]",
+              "type": "date",
+              "description": "Users birthdate",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[height]",
+              "type": "integer",
+              "description": "Users height",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[sex]",
+              "type": "boolean",
+              "description": "Users sex",
+              "required": true
             }
           ],
           "nickname": "Users#create",
@@ -58,6 +79,80 @@
           ],
           "nickname": "Users#show",
           "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/users/{id}",
+      "operations": [
+        {
+          "summary": "Update a user",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "users id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user[login]",
+              "type": "string",
+              "description": "users login",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user[password]",
+              "type": "string",
+              "description": "users password",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user[birthdate]",
+              "type": "date",
+              "description": "Users birthdate",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[height]",
+              "type": "integer",
+              "description": "Users height",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[sex]",
+              "type": "boolean",
+              "description": "Users sex",
+              "required": true
+            }
+          ],
+          "nickname": "Users#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/users/{id}",
+      "operations": [
+        {
+          "summary": "Destroys the user",
+          "notes": "Notes...",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "User id",
+              "required": true
+            }
+          ],
+          "nickname": "Users#destroy",
+          "method": "delete"
         }
       ]
     }

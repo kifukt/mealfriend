@@ -14,8 +14,13 @@ class DiariesController < ApplicationController
     @diaries = Diary.all
   end
 
-  # GET /diaries/1
+  # GET /diaries/
   # GET /diaries/1.json
+  swagger_api :show do
+    summary 'Returns one diary for authenticatted user'
+    param :path, :id, :integer, :required, "Diary id"
+    notes 'Notes...'
+  end
   def show
   end
 
@@ -33,12 +38,13 @@ class DiariesController < ApplicationController
   swagger_api :create do
     summary "Create new diary"
     param :header, "Authorization", :string, :required, "Authentication token"
-    param :path, :user_id, :integer, :required, "User id"
+    param :form, :user_id, :integer, :required, "User id"
     param :form, "diary[weight]", :float, :required, "Weight of a diary"
   end
   def create
-    @user = User.find(params[:login])
-    @diary = @user.diary.new(diary_params)
+    @user = User.find(params[:user_id])
+    @diary = @user.diaries.new(diary_params)
+    @diary.user = current_user
 
 
     respond_to do |format|
@@ -54,6 +60,12 @@ class DiariesController < ApplicationController
 
   # PATCH/PUT /diaries/1
   # PATCH/PUT /diaries/1.json
+  swagger_api :update do
+    summary "Update a diary"
+    param :path, :id, :integer, :required, "Diary id"
+    param :path, :user_id, :integer, :required, "user id"
+    param :form, "diary[weight]", :float, :required, "Weight of a diary"
+  end
   def update
     respond_to do |format|
       if @diary.update(diary_params)
@@ -68,6 +80,13 @@ class DiariesController < ApplicationController
 
   # DELETE /diaries/1
   # DELETE /diaries/1.json
+  swagger_api :destroy do |diary|
+    summary 'Destroys a diary'
+    param :path, :id, :integer, :required, "Post id"
+    param :path, :user_id, :integer, :required, "Topic id"
+    param :path, :weight, :float, :required, "Weight of a diary"
+    notes 'Notes...'
+  end
   def destroy
     @diary.destroy
     respond_to do |format|

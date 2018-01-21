@@ -12,6 +12,10 @@
       "description": "Intakes"
     },
     {
+      "path": "/static.{format}",
+      "description": "Students"
+    },
+    {
       "path": "/sessions.{format}",
       "description": "Authentication"
     },

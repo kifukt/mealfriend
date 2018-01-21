@@ -29,6 +29,25 @@
           "method": "post"
         }
       ]
+    },
+    {
+      "path": "/logout",
+      "operations": [
+        {
+          "summary": "Invalidate a token",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            }
+          ],
+          "nickname": "Sessions#destroy",
+          "method": "delete"
+        }
+      ]
     }
   ],
   "authorizations": null

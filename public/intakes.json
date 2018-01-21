@@ -30,6 +30,45 @@
             },
             {
               "paramType": "form",
+              "name": "intake[amount]",
+              "type": "float",
+              "description": "Amount of an intake",
+              "required": true
+            }
+          ],
+          "nickname": "Intakes#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/intakes/{id}",
+      "operations": [
+        {
+          "summary": "Returns one intake",
+          "notes": "Notes...",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Intake id",
+              "required": true
+            }
+          ],
+          "nickname": "Intakes#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/intakes/{id}",
+      "operations": [
+        {
+          "summary": "Update an intake",
+          "parameters": [
+            {
+              "paramType": "form",
               "name": "ingredient_id",
               "type": "integer",
               "description": "ingredient id",
@@ -40,11 +79,31 @@
               "name": "intake[amount]",
               "type": "float",
               "description": "Amount of an intake",
+              "required": false
+            }
+          ],
+          "nickname": "Intakes#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/intakes/{id}",
+      "operations": [
+        {
+          "summary": "Destroys an intake",
+          "notes": "Notes...",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Intake id",
               "required": true
             }
           ],
-          "nickname": "Intakes#create",
-          "method": "post"
+          "nickname": "Intakes#destroy",
+          "method": "delete"
         }
       ]
     }
