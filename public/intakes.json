@@ -1,0 +1,53 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "intakes",
+  "apis": [
+    {
+      "path": "/intakes",
+      "operations": [
+        {
+          "summary": "Returns all intakes",
+          "notes": "Notes...",
+          "nickname": "Intakes#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/intakes",
+      "operations": [
+        {
+          "summary": "Create new intake",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "ingredient_id",
+              "type": "integer",
+              "description": "ingredient id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "intake[amount]",
+              "type": "float",
+              "description": "Amount of an intake",
+              "required": true
+            }
+          ],
+          "nickname": "Intakes#create",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

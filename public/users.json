@@ -1,0 +1,66 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "users",
+  "apis": [
+    {
+      "path": "/users",
+      "operations": [
+        {
+          "summary": "Returns all users",
+          "notes": "Notes...",
+          "nickname": "Users#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/users",
+      "operations": [
+        {
+          "summary": "Create a user",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "user[login]",
+              "type": "string",
+              "description": "Users login",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user[password]",
+              "type": "string",
+              "description": "Users password",
+              "required": true
+            }
+          ],
+          "nickname": "Users#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/users/{id}",
+      "operations": [
+        {
+          "summary": "Returns one user",
+          "notes": "Notes...",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Users id",
+              "required": true
+            }
+          ],
+          "nickname": "Users#show",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

@@ -1,8 +1,15 @@
 class DiariesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_diary, only: [:show, :edit, :update, :destroy]
+  before_action :require_token, only: [:create]
+  swagger_controller :diaries, 'Diaries'
 
   # GET /diaries
   # GET /diaries.json
+  swagger_api :index do
+    summary 'Returns all diaries'
+    notes 'Notes...'
+  end
   def index
     @diaries = Diary.all
   end
@@ -23,13 +30,21 @@ class DiariesController < ApplicationController
 
   # POST /diaries
   # POST /diaries.json
+  swagger_api :create do
+    summary "Create new diary"
+    param :header, "Authorization", :string, :required, "Authentication token"
+    param :path, :user_id, :integer, :required, "User id"
+    param :form, "diary[weight]", :float, :required, "Weight of a diary"
+  end
   def create
-    @diary = Diary.new(diary_params)
+    @user = User.find(params[:login])
+    @diary = @user.diary.new(diary_params)
+
 
     respond_to do |format|
       if @diary.save
         format.html { redirect_to @diary, notice: 'Diary was successfully created.' }
-        format.json { render :show, status: :created, location: @diary }
+        format.json { render :show, status: :created }
       else
         format.html { render :new }
         format.json { render json: @diary.errors, status: :unprocessable_entity }

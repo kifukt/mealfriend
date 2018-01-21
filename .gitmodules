@@ -1,0 +1,6 @@
+[submodule "swagger"]
+	path = swagger
+	url = git@github.com:wordnik/swagger-ui.git
+[submodule "public/swagger"]
+	path = public/swagger
+	url = git@github.com:wordnik/swagger-ui.git

@@ -1,8 +1,16 @@
 class IntakesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_intake, only: [:show, :edit, :update, :destroy]
+  before_action :require_token, only: [:create]
+  swagger_controller :intakes, 'Intakes'
+
 
   # GET /intakes
   # GET /intakes.json
+  swagger_api :index do
+    summary 'Returns all intakes'
+    notes 'Notes...'
+  end
   def index
     @intakes = Intake.all
   end
@@ -23,13 +31,21 @@ class IntakesController < ApplicationController
 
   # POST /intakes
   # POST /intakes.json
+  swagger_api :create do
+    summary "Create new intake"
+    param :header, "Authorization", :string, :required, "Authentication token"
+    param :form, "ingredient_id", :integer, :required, "ingredient id"
+    param :form, "intake[amount]", :float, :required, "Amount of an intake"
+   end
   def create
-    @intake = Intake.new(intake_params)
+    @ingredient = Ingredient.find(params[:ingredient_id])
+    @intake = @ingredient.intake.new(intake_params)
+    @intake.user = current_user
 
     respond_to do |format|
       if @intake.save
         format.html { redirect_to @intake, notice: 'Intake was successfully created.' }
-        format.json { render :show, status: :created, location: @intake }
+        format.json { render :show, status: :created }
       else
         format.html { render :new }
         format.json { render json: @intake.errors, status: :unprocessable_entity }

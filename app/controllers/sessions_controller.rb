@@ -1,6 +1,12 @@
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  swagger_controller :session, "Authentication"
   def new
+  end
+  swagger_api :create do
+    summary "Gather a token"
+    param :form, "session[login]", :string, :required, "Users index"
+    param :form, "session[password]", :string, :required, "Users password"
   end
   def create
     respond_to do |format|

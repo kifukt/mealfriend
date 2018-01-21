@@ -1,8 +1,15 @@
 class IngredientsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  #before_action :require_token, only: [:create]
+  swagger_controller :ingredients, 'Ingredients'
 
   # GET /ingredients
   # GET /ingredients.json
+  swagger_api :index do
+    summary 'Returns all ingredients'
+    notes 'Notes...'
+  end
   def index
     @ingredients = Ingredient.all
   end
@@ -23,6 +30,15 @@ class IngredientsController < ApplicationController
 
   # POST /ingredients
   # POST /ingredients.json
+  swagger_api :create do
+    summary "Create new ingredient"
+    #param :header, "Authorization", :string, :required, "Authentication token"
+    param :form, "ingredient[name]", :string, :required, "Title of an ingredient"
+    param :form, "ingredient[calories]", :float, :required, "Calories amount"
+    param :form, "ingredient[proteins]", :float, :required, "Proteins amount"
+    param :form, "ingredient[carbohydrates]", :float, :required, "Carbohydrates amount"
+    param :form, "ingredient[fats]", :float, :required, "Fats amount"
+  end
   def create
     @ingredient = Ingredient.new(ingredient_params)
 
@@ -69,6 +85,6 @@ class IngredientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ingredient_params
-      params.require(:ingredient).permit(:calories, :carbohydrates, :fats, :name, :proteins)
+      params.require(:ingredient).permit(:name, :calories, :carbohydrates, :fats, :proteins)
     end
 end

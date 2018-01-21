@@ -1,18 +1,34 @@
 class UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  swagger_controller :users, 'Users'
   # GET /users
   # GET /users.json
+  swagger_api :index do
+    summary 'Returns all users'
+    notes 'Notes...'
+  end
   def index
     @users = User.all
   end
 
   # GET /users/1
   # GET /users/1.json
+  swagger_api :show do
+    summary 'Returns one user'
+    param :path, :id, :integer, :required, "Users id"
+    notes 'Notes...'
+  end
   def show
   end
 
   # GET /users/new
+  swagger_api :create do
+    summary "Create a user"
+    param :form, "user[login]", :string, :required, "Users login"
+    param :form, "user[password]", :string, :required, "Users password"
+  end
   def new
     @user = User.new
   end
@@ -71,4 +87,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:login, :password, :password_confirmation, :birthdate, :height, :sex)
     end
+  
 end
