@@ -83,6 +83,11 @@ class IngredientsController < ApplicationController
 
   # DELETE /ingredients/1
   # DELETE /ingredients/1.json
+  swagger_api :destroy do
+    summary 'Destroys an ingredient'
+    param :path, :id, :integer, :required, "Ingredient id"
+    notes 'Notes...'
+  end
   def destroy
     @ingredient.destroy
     respond_to do |format|

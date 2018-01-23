@@ -135,6 +135,26 @@
           "method": "patch"
         }
       ]
+    },
+    {
+      "path": "/ingredients/{id}",
+      "operations": [
+        {
+          "summary": "Destroys an ingredient",
+          "notes": "Notes...",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Ingredient id",
+              "required": true
+            }
+          ],
+          "nickname": "Ingredients#destroy",
+          "method": "delete"
+        }
+      ]
     }
   ],
   "authorizations": null
