@@ -1,13 +1,14 @@
 class DiariesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_diary, only: [:show, :edit, :update, :destroy]
-  before_action :require_token, only: [:create]
+  before_action :require_token, only: [:create, :index]
   swagger_controller :diaries, 'Diaries'
 
   # GET /diaries
   # GET /diaries.json
   swagger_api :index do
-    summary 'Returns all diaries'
+    summary 'Returns diaries of certain user'
+    param :header, "Authorization", :string, :required, "Authentication token"
     notes 'Notes...'
   end
   def index

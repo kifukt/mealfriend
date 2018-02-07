@@ -67,7 +67,6 @@
       "operations": [
         {
           "summary": "Returns one ingredient",
-          "notes": "Notes...",
           "parameters": [
             {
               "paramType": "path",
@@ -77,6 +76,7 @@
               "required": true
             }
           ],
+          "notes": "Notes...",
           "nickname": "Ingredients#show",
           "method": "get"
         }
@@ -141,7 +141,6 @@
       "operations": [
         {
           "summary": "Destroys an ingredient",
-          "notes": "Notes...",
           "parameters": [
             {
               "paramType": "path",
@@ -151,6 +150,7 @@
               "required": true
             }
           ],
+          "notes": "Notes...",
           "nickname": "Ingredients#destroy",
           "method": "delete"
         }

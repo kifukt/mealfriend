@@ -8,7 +8,16 @@
       "path": "/diaries",
       "operations": [
         {
-          "summary": "Returns all diaries",
+          "summary": "Returns diaries of certain user",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            }
+          ],
           "notes": "Notes...",
           "nickname": "Diaries#index",
           "method": "get"
@@ -53,7 +62,6 @@
       "operations": [
         {
           "summary": "Returns one diary for authenticatted user",
-          "notes": "Notes...",
           "parameters": [
             {
               "paramType": "path",
@@ -63,6 +71,7 @@
               "required": true
             }
           ],
+          "notes": "Notes...",
           "nickname": "Diaries#show",
           "method": "get"
         }
@@ -99,7 +108,6 @@
       "operations": [
         {
           "summary": "Destroys a diary",
-          "notes": "Notes...",
           "parameters": [
             {
               "paramType": "path",
@@ -109,6 +117,7 @@
               "required": true
             }
           ],
+          "notes": "Notes...",
           "nickname": "Diaries#destroy",
           "method": "delete"
         }

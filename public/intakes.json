@@ -8,8 +8,16 @@
       "path": "/intakes",
       "operations": [
         {
-          "summary": "Returns all intakes",
-          "notes": "Notes...",
+          "summary": "Returns intakes of current user",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            }
+          ],
           "nickname": "Intakes#index",
           "method": "get"
         }
@@ -34,6 +42,20 @@
               "type": "float",
               "description": "Amount of an intake",
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "intake[user_id]",
+              "type": "float",
+              "description": "User id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "intake[ingredient_id]",
+              "type": "float",
+              "description": "ingredients id",
+              "required": true
             }
           ],
           "nickname": "Intakes#create",
@@ -46,7 +68,6 @@
       "operations": [
         {
           "summary": "Returns one intake",
-          "notes": "Notes...",
           "parameters": [
             {
               "paramType": "path",
@@ -56,6 +77,7 @@
               "required": true
             }
           ],
+          "notes": "Notes...",
           "nickname": "Intakes#show",
           "method": "get"
         }
@@ -69,7 +91,7 @@
           "parameters": [
             {
               "paramType": "form",
-              "name": "ingredient_id",
+              "name": "intake_id",
               "type": "integer",
               "description": "ingredient id",
               "required": true
@@ -92,7 +114,6 @@
       "operations": [
         {
           "summary": "Destroys an intake",
-          "notes": "Notes...",
           "parameters": [
             {
               "paramType": "path",
@@ -102,6 +123,7 @@
               "required": true
             }
           ],
+          "notes": "Notes...",
           "nickname": "Intakes#destroy",
           "method": "delete"
         }

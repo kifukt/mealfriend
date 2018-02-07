@@ -1,18 +1,20 @@
 class IntakesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_intake, only: [:show, :edit, :update, :destroy]
-  before_action :require_token, only: [:create]
+  before_action :require_token, only: [:create, :index]
   swagger_controller :intakes, 'Intakes'
 
 
   # GET /intakes
   # GET /intakes.json
   swagger_api :index do
-    summary 'Returns all intakes'
-    notes 'Notes...'
+    summary 'Returns intakes of current user'
+    param :header, "Authorization", :string, :required, "Authentication token"
   end
   def index
     @intakes = Intake.all
+    # user = User.find_by(id: session[:user_id])
+    # @intakes = user.intake.all
   end
 
   # GET /intakes/1
@@ -39,15 +41,15 @@ class IntakesController < ApplicationController
   swagger_api :create do
     summary "Create new intake"
     param :header, "Authorization", :string, :required, "Authentication token"
-    param :path, :ingredient_id, :integer, :required, "Ingredient id"
-    
     param :form, "intake[amount]", :float, :required, "Amount of an intake"
+    param :form, "intake[user_id]", :float, :required, "User id"
+    param :form, "intake[ingredient_id]", :float, :required, "ingredients id"
   end
   def create
-    @ingredient = Ingredient.find(params[:ingredient_id])
-    @intake = @ingredient.intake.new(intake_params)
-    @intake.user = current_user
-
+    # @ingredient = Ingredient.find(params[:ingredient_id])
+    @intake = Intake.new(intake_params)
+    puts @intake.inspect
+    # @intake.user = current_user
     respond_to do |format|
       if @intake.save
         format.html { redirect_to @intake, notice: 'Intake was successfully created.' }
@@ -63,7 +65,7 @@ class IntakesController < ApplicationController
   # PATCH/PUT /intakes/1.json
   swagger_api :update do
     summary "Update an intake"
-    param :form, "ingredient_id", :integer, :required, "ingredient id"
+    param :form, "intake_id", :integer, :required, "ingredient id"
     param :form, "intake[amount]", :float, :optional, "Amount of an intake"
   end
   def update
