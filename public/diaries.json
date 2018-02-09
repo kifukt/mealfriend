@@ -39,7 +39,7 @@
             },
             {
               "paramType": "form",
-              "name": "user_id",
+              "name": "diary[user_id]",
               "type": "integer",
               "description": "User id",
               "required": true

@@ -39,13 +39,13 @@ class DiariesController < ApplicationController
   swagger_api :create do
     summary "Create new diary"
     param :header, "Authorization", :string, :required, "Authentication token"
-    param :form, :user_id, :integer, :required, "User id"
+    param :form, "diary[user_id]", :integer, :required, "User id"
     param :form, "diary[weight]", :float, :required, "Weight of a diary"
   end
   def create
-    @user = User.find(params[:user_id])
-    @diary = @user.diaries.new(diary_params)
-    @diary.user = current_user
+    # @user = User.find(params[:user_id])
+    @diary = Diary.new(diary_params)
+    # @diary.user = current_user
 
 
     respond_to do |format|
